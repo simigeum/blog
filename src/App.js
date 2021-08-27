@@ -15,6 +15,19 @@ function postNameChange (){
   postNamefunction( newArray );
 }
 
+function postList(){
+  var newArray = [];
+  for (var i = 0; i < 3; i++){
+    newArray.push(
+      <li className="post-item">
+        <h3 onClick={ () => { modalfunction(!modal) } }> 글제목 <span onClick={ () => { likePlus(like + 1) } }>😊</span> {like} </h3>
+        <span>2021.08.21</span>
+      </li>
+    );
+  }  
+
+  return newArray;
+}
 
   return (
     <div className="App">
@@ -23,19 +36,23 @@ function postNameChange (){
       </header>
       <button type="button" onClick={ postNameChange }>Ice cream</button>
       <ol className="post-list">
-        <li className="post-item">
-          <h3>{ postName[0] } <span onClick={ () => { likePlus(like + 1) } }>😊</span> {like} </h3>
-          <span>2021.08.25</span>
-        </li>
-        <li className="post-item">
-          <h3>{ postName[1] }</h3>
-          <span>2021.08.21</span>
-        </li>  
-        <li className="post-item">
-          <h3 onClick={ () => { modalfunction(true) } }>{ postName[2] }</h3>
-          <span>2021.08.14</span>
-        </li>
+      {
+        postName.map((title)=>{
+          return(
+            <li className="post-item">
+              <h3 onClick={ () => { modalfunction(!modal) } }>{ title }  <span onClick={ () => { likePlus(like + 1) } }>😊</span> {like} </h3>
+              <span>2021.08.21</span>
+            </li> 
+          )
+        })
+      }
       </ol>
+
+
+
+
+
+
 
 <button type="button" onClick={ () => { modalfunction(!modal) } }>버튼</button>
 
