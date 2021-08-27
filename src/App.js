@@ -4,12 +4,13 @@ import './App.css';
 
 function App() {
 
-let [postName, postNamefunction] = useState( ['How you like that 가사 해석', 'Kill this love', 'lovesick girl'] );
+let [postName, postNamefunction] = useState( ['How you like that 가사 해석', 'lovesick girl' , 'Kill this love'] );
 let [like, likePlus] = useState(0);
 
 function postNameChange (){
   var newArray = [...postName];
   newArray[0] = 'Ice cream 가사 해석';
+  newArray.sort();
   postNamefunction( newArray );
 }
 
@@ -34,8 +35,21 @@ function postNameChange (){
           <span>2021.08.14</span>
         </li>
       </ol>
+
+      <Modal></Modal>
+
     </div>
   );
+}
+
+function Modal(){
+  return (
+    <div className="modal">
+      <h3>글제목</h3>
+      <p>날짜</p>
+      <p>상세내용</p>
+    </div>
+  )
 }
 
 export default App;
