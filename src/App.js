@@ -6,6 +6,7 @@ function App() {
 
 let [postName, postNamefunction] = useState( ['How you like that 가사 해석', 'lovesick girl' , 'Kill this love'] );
 let [like, likePlus] = useState(0);
+let [modal, modalfunction] = useState(false);
 
 function postNameChange (){
   var newArray = [...postName];
@@ -31,12 +32,18 @@ function postNameChange (){
           <span>2021.08.21</span>
         </li>  
         <li className="post-item">
-          <h3>{ postName[2] }</h3>
+          <h3 onClick={ () => { modalfunction(true) } }>{ postName[2] }</h3>
           <span>2021.08.14</span>
         </li>
       </ol>
 
-      <Modal></Modal>
+<button type="button" onClick={ () => { modalfunction(!modal) } }>버튼</button>
+
+{
+  modal === true
+  ? <Modal></Modal>
+  : null
+}
 
     </div>
   );
