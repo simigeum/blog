@@ -58,7 +58,7 @@ function postList(){
 
 {
   modal === true
-  ? <Modal></Modal>
+  ? <Modal postName={postName}></Modal>
   : null
 }
 
@@ -66,10 +66,10 @@ function postList(){
   );
 }
 
-function Modal(){
+function Modal(props){
   return (
     <div className="modal">
-      <h3>글제목</h3>
+      <h3> { props.postName[1] }</h3>
       <p>날짜</p>
       <p>상세내용</p>
     </div>
