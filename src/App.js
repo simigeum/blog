@@ -7,6 +7,7 @@ function App() {
 let [postName, postNamefunction] = useState( ['How you like that 가사 해석', 'lovesick girl' , 'Kill this love'] );
 let [like, likePlus] = useState(0);
 let [modal, modalfunction] = useState(false);
+let [postNum, postNumFunction] = useState(0);
 
 function postNameChange (){
   var newArray = [...postName];
@@ -20,7 +21,7 @@ function postList(){
   for (var i = 0; i < 3; i++){
     newArray.push(
       <li className="post-item">
-        <h3 onClick={ () => { modalfunction(!modal) } }> 글제목 <span onClick={ () => { likePlus(like + 1) } }>😊</span> {like} </h3>
+        <h3 onClick={ () => { postNumFunction(i) } }> 글제목 <span onClick={ () => { likePlus(like + 1) } }>😊</span> {like} </h3>
         <span>2021.08.21</span>
       </li>
     );
@@ -37,10 +38,10 @@ function postList(){
       <button type="button" onClick={ postNameChange }>Ice cream</button>
       <ol className="post-list">
       {
-        postName.map((title)=>{
+        postName.map((title, i)=>{
           return(
             <li className="post-item">
-              <h3 onClick={ () => { modalfunction(!modal) } }>{ title }  <span onClick={ () => { likePlus(like + 1) } }>😊</span> {like} </h3>
+              <h3 onClick={ () => {  postNumFunction(i) } }> { title } <span onClick={ () => { likePlus(like + 1) } }>😊</span> {like} </h3>
               <span>2021.08.21</span>
             </li> 
           )
@@ -58,7 +59,7 @@ function postList(){
 
 {
   modal === true
-  ? <Modal postName={postName}></Modal>
+  ? <Modal postName={postName} postNum={postNum}></Modal>
   : null
 }
 
@@ -69,7 +70,7 @@ function postList(){
 function Modal(props){
   return (
     <div className="modal">
-      <h3> { props.postName[1] }</h3>
+      <h3> { props.postName[props.postNum] }</h3>
       <p>날짜</p>
       <p>상세내용</p>
     </div>
