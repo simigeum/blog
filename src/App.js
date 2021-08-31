@@ -8,6 +8,7 @@ let [postName, postNamefunction] = useState( ['How you like that 가사 해석',
 let [like, likePlus] = useState(0);
 let [modal, modalfunction] = useState(false);
 let [postNum, postNumFunction] = useState(0);
+let [input, inputFunction] = useState('');
 
 function postNameChange (){
   var newArray = [...postName];
@@ -40,7 +41,7 @@ function postList(){
       {
         postName.map((title, i)=>{
           return(
-            <li className="post-item">
+            <li className="post-item" key={ i }>
               <h3 onClick={ () => {  postNumFunction(i) } }> { title } <span onClick={ () => { likePlus(like + 1) } }>😊</span> {like} </h3>
               <span>2021.08.21</span>
             </li> 
@@ -51,7 +52,8 @@ function postList(){
 
 
 
-
+      {input}
+      <input onChange={ (e) => { inputFunction(e.target.value) } }></input>
 
 
 
