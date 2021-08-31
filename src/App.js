@@ -17,6 +17,12 @@ function postNameChange (){
   postNamefunction( newArray );
 }
 
+function postNameAdd (){
+  var arrayCopy = [...postName];
+  arrayCopy.unshift(input);
+  postNamefunction( arrayCopy );
+}
+
 function postList(){
   var newArray = [];
   for (var i = 0; i < 3; i++){
@@ -52,8 +58,13 @@ function postList(){
 
 
 
-      {input}
-      <input onChange={ (e) => { inputFunction(e.target.value) } }></input>
+      <div>
+        <input onChange={ (e) => { inputFunction(e.target.value) } }></input>
+        <button onClick={ postNameAdd }>전송</button>
+      </div>
+
+      {/* {input}
+      <input onChange={ (e) => { inputFunction(e.target.value) } }></input> */}
 
 
 
