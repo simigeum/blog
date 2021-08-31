@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
@@ -66,7 +66,7 @@ function postList(){
       {/* {input}
       <input onChange={ (e) => { inputFunction(e.target.value) } }></input> */}
 
-
+      <Profile></Profile>
 
 <button type="button" onClick={ () => { modalfunction(!modal) } }>버튼</button>
 
@@ -78,6 +78,27 @@ function postList(){
 
     </div>
   );
+}
+
+class Profile extends React.Component {
+  constructor(){
+    super();
+    this.state = { name : "Lee", age : 28 }
+  }
+
+changeName = () => {
+ this.setState( {name : "Kim"} )
+}
+
+  render(){
+    return(
+      <div>
+        <div>프로필 영역</div>
+        <strong>저는 { this.state.name } 입니다.</strong>
+        <button type="button" onClick={ this.changeName }>이름바꾸기</button>
+      </div>
+    );
+  }
 }
 
 function Modal(props){
